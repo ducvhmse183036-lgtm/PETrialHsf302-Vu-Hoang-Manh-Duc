@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Product</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1dd1a1;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: white;
+        }
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+        }
+        label {
+            display: block;
+            margin-top: 15px;
+            color: #333;
+            font-weight: bold;
+        }
+        input[type="text"],
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        input.error,
+        select.error {
+            border-color: red;
+        }
+        .error-message {
+            color: red;
+            font-size: 14px;
+            margin-top: 5px;
+            display: block;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #1dd1a1;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button[type="reset"] {
+            background-color: #ff6b6b;
+            margin-left: 10px;
+        }
+        .btn-back {
+            background-color: #95a5a6;
+            text-decoration: none;
+            display: inline-block;
+            padding: 10px 20px;
+            color: white;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        button:hover, .btn-back:hover {
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+<div style="text-align: center;">
+    <a th:href="@{/product/management}" class="btn-back">← Back to Management</a>
+</div>
+
+<h1>Add New Product</h1>
+
+<form th:action="@{/product/add}" th:object="${product}" method="post">
+
+    <label for="productName">Product Name:</label>
+    <input type="text" id="productName" th:field="*{productName}"
+           th:classappend="${#fields.hasErrors('productName')} ? 'error' : ''"
+           minlength="5" maxlength="50" required/>
+    <div th:if="${#fields.hasErrors('productName')}"
+         th:errors="*{productName}"
+         class="error-message"></div>
+
+    <label for="price">Price:</label>
+    <input type="number" id="price" th:field="*{price}"
+           th:classappend="${#fields.hasErrors('price')} ? 'error' : ''"
+           min="100" required/>
+    <div th:if="${#fields.hasErrors('price')}"
+         th:errors="*{price}"
+         class="error-message"></div>
+
+    <label for="stock">Stock:</label>
+    <input type="number" id="stock" th:field="*{stock}"
+           th:classappend="${#fields.hasErrors('stock')} ? 'error' : ''"
+           min="0" max="1000" required/>
+    <div th:if="${#fields.hasErrors('stock')}"
+         th:errors="*{stock}"
+         class="error-message"></div>
+
+    <label for="category">Category:</label>
+    <select id="category" name="category.cateId"
+            th:classappend="${#fields.hasErrors('category')} ? 'error' : ''"
+            required>
+        <option value="" disabled selected>-- Select Category --</option>
+        <option th:each="cate : ${categories}"
+                th:value="${cate.cateId}"
+                th:text="${cate.cateName}">
+        </option>
+    </select>
+    <div th:if="${#fields.hasErrors('category')}"
+         th:errors="*{category}"
+         class="error-message"></div>
+
+    <button type="submit">Add Product</button>
+    <button type="reset">Reset</button>
+</form>
+</body>
+</html>

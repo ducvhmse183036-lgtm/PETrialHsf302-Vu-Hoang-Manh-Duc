@@ -1,0 +1,90 @@
+/* =======================
+   Global Styles
+======================= */
+body {
+    background-color: #02CAA9; /* Background color */
+    color: white; /* Default text color */
+    font-family: Arial, sans-serif; /* Font */
+    font-size: 18px;
+    margin: 20px;
+    padding: 20px;
+}
+
+/* =======================
+   Header Styles
+======================= */
+h1 {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 10px; /* Reduced margin to tighten spacing */
+}
+
+/* Container cho phần Welcome và Logout */
+.header-user {
+    display: flex;
+    justify-content: flex-end; /* Align to right side */
+    align-items: center;
+    margin-bottom: 20px; /* Space below welcome section */
+    font-size: 16px;
+}
+
+.header-user span {
+    color: white;
+}
+
+.header-user a {
+    color: white;
+    text-decoration: underline;
+    margin-left: 10px;
+}
+
+/* =======================
+   Button Styles
+======================= */
+button {
+    background-color: white;
+    color: #02CAA9;
+    border: none;
+    padding: 10px 15px;
+    margin-top: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 4px;
+}
+
+button:hover {
+    background-color: #f0f0f0;
+}
+
+/* Add new product button can be aligned left or center */
+.add-product {
+    display: flex;
+    justify-content: flex-start; /* Change to center if you want centered */
+    margin-bottom: 20px;
+}
+
+.add-product a {
+    color: #02CAA9;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* =======================
+   Table Styles
+======================= */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+th, td {
+    border: 1px solid white;
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: rgba(0, 0, 0, 0.3);
+    font-weight: bold;
+}

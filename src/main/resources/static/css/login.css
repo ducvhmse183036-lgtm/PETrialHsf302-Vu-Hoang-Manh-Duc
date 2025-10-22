@@ -1,0 +1,64 @@
+body {
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    background-color: #02CAA9;
+    color: black;
+    margin: 0;
+    height: 100vh;                /* chiếm toàn màn hình */
+    display: flex;                /* dùng flexbox để canh giữa */
+    flex-direction: column;       /* xếp các phần tử theo chiều dọc */
+    justify-content: center;      /* canh giữa theo chiều dọc */
+    align-items: center;          /* canh giữa theo chiều ngang */
+}
+
+h1 {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 20px;          /* khoảng cách giữa title và form */
+}
+
+/* Style cho form */
+form {
+    background-color: rgba(255, 255, 255, 0.1); /* nền hơi trong suốt để nổi bật */
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+/* Style label và input */
+label {
+    display: block;
+    margin-top: 15px;
+    text-align: left;
+}
+
+input {
+    width: 250px;                /* độ rộng hợp lý hơn 20% */
+    padding: 10px;
+    margin-top: 5px;
+    background-color: transparent;
+    color: black;
+    border: 1px solid white;
+    border-radius: 6px;
+}
+
+input::placeholder {
+    color: black;
+}
+
+/* Style cho button */
+button {
+    margin-top: 20px;
+    padding: 10px 25px;
+    background-color: white;
+    color: #02CAA9;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: #e0e0e0;
+}

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sony Management Page</title>
+    <link rel="stylesheet" th:href="@{/css/product.css}">
+</head>
+<body>
+<h1>Vũ Hoàng Mạnh Đức - Sony Management Page</h1>
+
+<div class="header-user">
+    <span>
+        Welcome,
+        <span th:text="${user.roleId == 1 ? 'ADMIN' : (user.roleId == 2 ? 'STAFF' : 'CUSTOMER'  )}"></span>
+    </span>
+    <a href="/logout">Logout</a>
+</div>
+
+<th:block th:if="${session.user.roleId == 1}">
+    <div class="add-product">
+        <button><a th:href="@{add}">Add a new product</a></button>
+    </div>
+</th:block>
+
+<!-- Product Table -->
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Stock</th>
+        <th>Create At</th>
+        <th>Category Name</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="product : ${products}">
+        <td th:text="${product.productID}">1</td>
+        <td th:text="${product.productName}">Sample Product</td>
+        <td th:text="${product.price}">$100</td>
+        <td th:text="${product.stock}">10</td>
+        <td th:text="${product.createAt}">2025-10-22</td>
+        <td th:text="${product.category.cateName}">Category 1</td>
+        <td>
+            <button><a th:href="@{'/product/update/' + ${product.productID}}">Update</a></button>
+            <th:block th:if="${session.user.roleId == 1}">
+                <button>
+                    <a th:href="@{'/product/delete/' + ${product.productID}}"
+                       onclick="return confirm('Are you sure you want to delete this product?');">Delete</a>
+                </button>
+            </th:block>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
